@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "28b014a3-4971-4f97-b510-9e5c9dfc26b5",
+		"name": "PCA Analytics",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27734625"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"token\", pm.response.headers.get('Authorization'));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{tenant-url}}/api/v1/auth/login",
+					"protocol": "https",
+					"host": [
+						"{{tenant-url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all sessions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{tenant-url}}/api/orchestrate/v3/agents/sessions",
+					"protocol": "https",
+					"host": [
+						"{{tenant-url}}"
+					],
+					"path": [
+						"api",
+						"orchestrate",
+						"v3",
+						"agents",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all agents",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{tenant-url}}/api/orchestrate/v3/agents",
+					"protocol": "https",
+					"host": [
+						"{{tenant-url}}"
+					],
+					"path": [
+						"api",
+						"orchestrate",
+						"v3",
+						"agents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all agent configurations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{tenant-url}}/api/orchestrate/v3/agents/configuration",
+					"protocol": "https",
+					"host": [
+						"{{tenant-url}}"
+					],
+					"path": [
+						"api",
+						"orchestrate",
+						"v3",
+						"agents",
+						"configuration"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "tenant-url",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
